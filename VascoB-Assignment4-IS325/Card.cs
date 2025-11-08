@@ -8,18 +8,19 @@ namespace WinFormsAssignment3
         public Image? CardImage { get; }
         public string Name { get; }
 
-        public Card(int id, Image? image, string name = "")
+        public Card(int id, Image? image, string name)
         {
             Id = id;
             CardImage = image;
-            Name = name ?? "";
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name.ToString();
         }
 
         public static readonly Card NoCard = new Card(-1, null, "No Card");
 
-        public override string ToString()
-        {
-            return string.IsNullOrEmpty(Name) ? Id.ToString() : Name;
-        }
     }
 }

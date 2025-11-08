@@ -16,13 +16,19 @@ namespace WinFormsAssignment3
             Shuffle();
         }
 
+        public void AddCard(Card card)
+        {
+            cards.Add(card);
+        }
+
         public void Shuffle()
         {
             cards.Clear();
             for (int i = 0; i < imageList.Images.Count; i++)
             {
                 Image? img = imageList.Images[i];
-                cards.Add(new Card(i, img));
+                string name = imageList.Images[i].Tag?.ToString() ?? $"card_{i}.png";
+                cards.Add(new Card(i, img, name));
             }
 
             Random rng = new Random();
@@ -73,7 +79,7 @@ namespace WinFormsAssignment3
                     string? line = reader.ReadLine();
                     if (int.TryParse(line, out int id) && id >= 0 && id < imageList.Images.Count)
                     {
-                        hand[i] = new Card(id, imageList.Images[id]);
+                        hand[i] = new Card(id, imageList.Images[id] , imageList.Images[i].Tag.ToString());
                     }
                     else
                     {

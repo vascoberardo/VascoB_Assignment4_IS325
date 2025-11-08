@@ -158,12 +158,12 @@ public partial class MainForm : Form
     {
         if (deckForm == null || deckForm.IsDisposed)
         {
-            deckForm = new DeckForm(deck);
+            deckForm = new DeckForm(deck, imglstCards); // ? Pass the shared ImageList
             deckForm.Show(this);
         }
         else if (!deckForm.Visible)
         {
-            deckForm = new DeckForm(deck);
+            deckForm = new DeckForm(deck, imglstCards); // ? Pass the shared ImageList
             deckForm.Show(this);
         }
         else
